@@ -14,6 +14,7 @@ router.get('/:id', (req, res) => {
 
 // post a new workout
 router.post('/', (req, res) => {
+    
     res.json({mssg: 'POST a new workout'})
 })
 
