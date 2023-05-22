@@ -2,20 +2,24 @@
 require('dotenv').config()
 
 const express = require('express')
+const workoutRoutes = require('./routes/workouts')
 
 // create the express app
 const app = express();
 
 // middleware
+// checks if the request has a body
+app.use(express.json())
+
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
 
 // routes
-app.get('/', (req, res) => {
-    res.json({mssg: 'Welcome to the app'})
-})
+// first argument sets the path
+// second argument uses all the routes listed in workouts.js (required in line 5)
+app.use('/api/workouts', workoutRoutes)
 
 // listen for requests
 app.listen(process.env.PORT, () => {
