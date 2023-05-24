@@ -1,6 +1,7 @@
 // Contains functions to pass into routes; this keeps the routes file cleaner
 
 const Workout = require('../models/workoutModel')
+const mongoose = require('mongoose')
 
 // get all workouts
 const getWorkouts = async (req, res) => {
@@ -13,13 +14,17 @@ const getWorkouts = async (req, res) => {
 const getWorkout = async (req, res) => {
     // gets changeable id from the params
     const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such workout found'})
+    }
     const workout = await Workout.findById(id)
 
     if (!workout) {
-        res.status(404).json({error: 'No such workout found'})
-    } else {
-        res.status(200).json(workout)
-    }
+        return res.status(404).json({error: 'No such workout found'})
+    } 
+
+    res.status(200).json(workout)
 }
 
 // create a new workout
