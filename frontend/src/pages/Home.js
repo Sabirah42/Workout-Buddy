@@ -6,7 +6,7 @@ const Home = () => {
 // empty array as second argument ensures that this onlly fires on first render
     useEffect(() => {
         const fetchWorkouts  = async () => {
-            const response = await fetch('http://localhost:4000/api/workouts')
+            const response = await fetch('/api/workouts')
             const json = await response.json()
 
             if (response.ok) {
