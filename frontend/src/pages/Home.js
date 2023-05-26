@@ -1,9 +1,12 @@
 import { useEffect, useState} from 'react'
 
+// components
+import WorkoutDetails from '../components/WorkoutDetails'
+
 const Home = () => {
     const [workouts, setworkouts] = useState(null)
 
-// empty array as second argument ensures that this onlly fires on first render
+// empty array as second argument ensures that this only fires on first render
     useEffect(() => {
         const fetchWorkouts  = async () => {
             const response = await fetch('/api/workouts')
@@ -21,7 +24,7 @@ const Home = () => {
         <div className="home">
             <div className="workouts">
                 {workouts && workouts.map((workout) => (
-                    <p key={workout._id}>{workout.title}</p>
+                    <WorkoutDetails key={workout._id} workout={workout} />
                 ))}
             </div>
         </div>
