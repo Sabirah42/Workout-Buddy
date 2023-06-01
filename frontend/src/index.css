@@ -58,14 +58,14 @@ header a {
 }
 .workout-details span {
   position: absolute;
-  font-size: 0.7em;
+  font-size: 0.9em;
   bottom: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f5de0e;
+  background: rgb(247, 72, 125);
   padding: 6px;
   border-radius: 50%;
-  color: #333;
+  color: #f9f7f7;
 }
 
 /* new workout form */
