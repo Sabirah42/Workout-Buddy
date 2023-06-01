@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 // a Schema defines the structure of a document in our database
 const Schema = mongoose.Schema
 
-// as we've set the requirements to true, a new workout document won't be able to be created without all of
-// these properties. Second argument sets timestamps for when the doc was created
+// as we've set the requirements to true, a new workout document won't be able to be created/saved to the database
+// without all of these properties. Second argument sets timestamps for when the doc was created
 const workoutSchema = new Schema({
     title: {
         type: String,
