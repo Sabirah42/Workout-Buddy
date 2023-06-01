@@ -21,7 +21,9 @@ const Home = () => {
         }
 
         fetchWorkouts()
-    }, [])
+        // dispatch is an external function that is not defined within useEffect, so must be added 
+        // to the array in the second argument
+    }, [dispatch])
 
     return (
         <div className="home">
