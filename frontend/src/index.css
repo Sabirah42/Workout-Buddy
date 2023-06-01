@@ -58,10 +58,11 @@ header a {
 }
 .workout-details span {
   position: absolute;
-  top: 20px;
+  font-size: 0.7em;
+  bottom: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: #f5de0e;
   padding: 6px;
   border-radius: 50%;
   color: #333;
