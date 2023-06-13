@@ -15,8 +15,9 @@ const userSchema = new Schema({
     }
 })
 
-//static signup method
-userSchema.statics.signup = async (email, password) => {
+// static signup method
+// need to use regular function rather than arrow function as using 'this' keyword within body
+userSchema.statics.signup = async function(email, password) {
 
     const exists = await this.findOne({ email })
 
