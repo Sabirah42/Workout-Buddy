@@ -31,7 +31,7 @@ userSchema.statics.signup = async function(email, password) {
         throw Error('Password not strong enough')
     }
     // validation end
-    
+
     const exists = await this.findOne({ email })
 
     if (exists) {
@@ -55,5 +55,27 @@ userSchema.statics.signup = async function(email, password) {
     return user
 }
 
+// static login method
+userSchema.statics.login = async function(email, password) {
+
+    if (!email || !password) {
+        throw Error('All fields must be completed')
+    }
+
+    const user = await this.findOne({ email })
+
+    if (!user) {
+        throw Error('Email not found')
+    }
+    // compare plain text and hashed passwords
+    const match = await bycrypt.compare(password, user.password)
+
+    if (!match) {
+        throw Error('Incorrect password')
+    }
+
+    return user
+
+}
 
 module.exports = mongoose.model('User', userSchema)
