@@ -17,4 +17,13 @@ export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, {
         user: null
     })
+
+    // log every time state changes to be able to track
+    console.log('AuthContext state: ', state)
+
+    return (
+        <AuthContext.Provider value={{...state, dispatch}}>
+            { children }
+        </AuthContext.Provider>
+    )
 }
